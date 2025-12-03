@@ -71,7 +71,7 @@ uint32_t CHA_CHA_CONST[] = {0x61707865, 0x3320646e, 0x79622d32, 0x6b206574};
 typedef struct { uint32_t v[16]; } uint32_16_array_t;
 
 void blockfunction(uint32_t state[16]) // 10*2 rounds
-{
+{   // setup state: concat constants (0, 1, 2, 3) | key (4-11) | counter (12) | nonce (13,14,15) - just FYI 11 22 33 44
     for (size_t i = 0; i < 10; i++)
     {
     quater_round(&state[0], &state[4], &state[8], &state[12]);
